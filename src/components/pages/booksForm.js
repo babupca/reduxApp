@@ -10,7 +10,8 @@ import { postBooks } from '../../actions/booksAction';
 class BooksForm extends React.Component{
     
     //dispatch the action
-    handleSubmit(){      
+    handleSubmit(){
+      
         const book = [{
             title: findDOMNode(this.refs.title).value,
             description: findDOMNode(this.refs.description).value,
@@ -41,7 +42,7 @@ class BooksForm extends React.Component{
     }
 }
 function mapDispatchToProps(dispatch){
-    
+   
     return bindActionCreators({postBooks}, dispatch);
 }
 export default connect(null, mapDispatchToProps)(BooksForm);

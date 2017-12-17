@@ -12,20 +12,20 @@ export function postBooks(book){
     debugger;
     return {
         type:"POST_BOOK",
-        pay: book
+        payload: book
     }
 }
 
 export function deleteBooks(id){
     return {
         type:"DELETE_BOOK",
-        pay: id
+        payload: id
     }
 }
 
 export function updateBooks(book){
     return {
         type:"UPDATE_BOOK",
-        pay: book
+        payload: book
     }
 }

@@ -3385,21 +3385,21 @@ function postBooks(book) {
     debugger;
     return {
         type: "POST_BOOK",
-        pay: book
+        payload: book
     };
 }
 
 function deleteBooks(id) {
     return {
         type: "DELETE_BOOK",
-        pay: id
+        payload: id
     };
 }
 
 function updateBooks(book) {
     return {
         type: "UPDATE_BOOK",
-        pay: book
+        payload: book
     };
 }
 
@@ -29109,23 +29109,14 @@ var BooksList = function (_React$Component) {
     _createClass(BooksList, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            this.props.getBooks([{
-                id: 1,
-                title: 'this is the book title',
-                description: 'this is the book  description',
-                price: 43.33
-            }, {
-                id: 2,
-                title: 'this is the second book title',
-                description: 'this is the second  book description',
-                price: 60
-            }]);
+            this.props.getBooks();
         }
     }, {
         key: 'render',
         value: function render() {
 
             var BooksList = this.props.books.map(function (booksArr) {
+
                 return _react2.default.createElement(
                     _reactBootstrap.Col,
                     { xs: 12, sm: 6, md: 4, key: booksArr.id },
@@ -29137,6 +29128,7 @@ var BooksList = function (_React$Component) {
                     })
                 );
             });
+
             return _react2.default.createElement(
                 _reactBootstrap.Grid,
                 { style: { marginTop: '15px' } },
@@ -29148,11 +29140,6 @@ var BooksList = function (_React$Component) {
                         { xs: 12, sm: 6 },
                         _react2.default.createElement(_booksForm2.default, null)
                     ),
-                    _react2.default.createElement(
-                        'h1',
-                        null,
-                        'Hello React'
-                    ),
                     BooksList
                 )
             );
@@ -29163,14 +29150,14 @@ var BooksList = function (_React$Component) {
 }(_react2.default.Component);
 
 function mapStateToProps(state) {
+
     return {
         books: state.books.books
     };
 }
 function mapDispatchToProps(dispatch) {
-    return (0, _redux.bindActionCreators)({
-        getBooks: _booksAction.getBooks
-    }, dispatch);
+
+    return (0, _redux.bindActionCreators)({ getBooks: _booksAction.getBooks }, dispatch);
 }
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BooksList);
 
@@ -40564,6 +40551,7 @@ var BooksForm = function (_React$Component) {
 
         //dispatch the action
         value: function handleSubmit() {
+
             var book = [{
                 title: (0, _reactDom.findDOMNode)(this.refs.title).value,
                 description: (0, _reactDom.findDOMNode)(this.refs.description).value,
